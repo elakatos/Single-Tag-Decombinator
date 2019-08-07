@@ -131,13 +131,15 @@ def Decombinator(dcr_args,outputfiles):
 
 if __name__ == '__main__':
 
-	args = args()	
-	args.tagfastadir = getTagFolder()
+	args = args()
+	if not os.path.isdir(args.tagfastadir):
+	    args.tagfastadir = getTagFolder()
 
 	outdir = organiseOutput()
 	outputfiles = []
-
-	st_dcr_input = "python SingleTagDecombinator.py"	
+	
+        scriptDir = os.path.dirname(os.path.realpath(__file__))
+	st_dcr_input = "python "+scriptDir+os.sep+"SingleTagDecombinator.py"	
 
 	for a in vars(args):
 		if vars(args)[a] == True:
