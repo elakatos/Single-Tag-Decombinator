@@ -2,10 +2,8 @@ import os
 import sys
 import collections
 
-from SupplementaryScripts.SingleTagTools.SingleTagDecombinator import args, get_chain
-import SupplementaryScripts.SingleTagTools.reconstructTCR as reconstructTCR
+from SingleTagDecombinator import args, get_chain
 from argparse import Namespace
-
 import reconstructTCR
 
 
