@@ -12,7 +12,7 @@ from Bio import pairwise2
 from Bio.pairwise2 import format_alignment
 
 import time
-
+import gzip
 
 def args():
 	parser = argparse.ArgumentParser( description='** script to find overlaps between fragments of TCR sequence and rebuild complete sequences. **')
@@ -185,13 +185,17 @@ def main(args):
 	if not cores: cores = mp.cpu_count()
 
 	lines = []
-	with open(file) as f:
+	if os.path.splitext(file)[1]=='.gz':
+	    with gzip.open(file) as f:
 		for line in f:
+			lines.append(line)
+	else:
+	    with open(file) as f:
+                for line in f:
 			lines.append(line)	
 	
 
 	reads = [l.rstrip().split(", ") for l in lines]	
-	
 	vreads = []
 	jreads = []	
 
