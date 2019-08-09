@@ -135,8 +135,9 @@ if __name__ == '__main__':
 	if not os.path.isdir(args.tagfastadir):
 	    args.tagfastadir = getTagFolder()
 
-	outdir = organiseOutput()
-	outputfiles = []
+	#outdir = organiseOutput()
+	outdir = os.path.dirname(args.fastq)
+        outputfiles = []
 	
         scriptDir = os.path.dirname(os.path.realpath(__file__))
 	st_dcr_input = "python "+scriptDir+os.sep+"SingleTagDecombinator.py"	
